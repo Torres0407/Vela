@@ -1,71 +1,39 @@
-// import { BrowserRouter, Route, Routes } from "react-router";
-// import Navbar from "./Components/Navbar";
-// import About from "./Pages/About";
-// import Homepage from "./Pages/Homepage";
-// import Shop from "./Pages/Shop";
-// import Contact from "./Pages/contact";
+import { BrowserRouter, Route, Routes } from "react-router";
 
-
-// function Layout() {
-//   const navigate = useNavigate();
-
-//   // Function passed to Navbar
-//   const handleNavigate = (path) => {
-//     navigate(path);
-//   };
-
-
-// export default function App() {
-//   return (
-//   <BrowserRouter>
-//    <Navbar onNavigate={handleNavigate}/>
-//     <Routes>
-//       <Route path="/homepage" element={<Homepage />} />
-//       <Route path="/about" element={<About />} />
-//       <Route path="/shop" element={<Shop />} />
-//        <Route path="/contact" element={<Contact />} />
-//       <Route path="*" element={<Homepage />} />
-//     </Routes>
-//   </BrowserRouter>
-//   );
-// }
-// }
-
-
-import { useCallback } from "react";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router";
-import Navbar from "./Components/Navbar";
-import About from "./Pages/About";
-import Contact from "./Pages/Contact";
-import Homepage from "./Pages/Homepage";
-import Shop from "./Pages/Shop";
-
-function Layout() {
-  const navigate = useNavigate();
-
-  // ✅ Stable function (prevents infinite re-renders)
-  const handleNavigate = useCallback((path) => {
-    navigate(path);
-  }, [navigate]);
-
-  return (
-    <>
-      <Navbar onNavigate={handleNavigate} />
-      <Routes>
-        <Route path="/homepage" element={<Homepage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<Homepage />} />
-      </Routes>
-    </>
-  );
-}
+import About from "./CustomerPages/About";
+import CustomerLayout from "./CustomerPages/CLayout";
+import Contact from "./CustomerPages/Contact";
+import Homepage from "./CustomerPages/Homepage";
+import Shop from "./CustomerPages/Shop";
+import VDashboard from "./VendorPages/VDashboard";
+import VLayout from "./VendorPages/VLayout";
+import VMessages from "./VendorPages/VMessages";
+import VOrders from "./VendorPages/VOrders";
+import VProducts from "./VendorPages/VProducts";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Layout />
+      <Routes>
+        {/* Customer Routes */}
+        <Route element={<CustomerLayout />}>
+          <Route path="/homepage" element={<Homepage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<Homepage />} />
+        </Route>
+
+        {/* Vendor Routes */}
+        <Route path="/vendor" element={<VLayout />}>
+          <Route index element={<VDashboard />} />
+          <Route path="/vendor/dashboard" element={<VDashboard />} />
+          <Route path="/vendor/products" element={<VProducts />} />
+          <Route path="/vendor/orders" element={<VOrders/>} />
+          <Route path="/vendor/messages" element={<VMessages />} />
+          {/* Add other vendor pages here */}
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }

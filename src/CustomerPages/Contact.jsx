@@ -7,16 +7,16 @@ export default function Contact() {
     {
       icon: <Mail size={28} className="text-rose-600" />,
       title: "Email Us",
-      details: "hello@vela.ng",
+      details: "Shop@vela.ng",
       subtext: "We'll respond within 24 hours",
-      link: "mailto:hello@vela.ng"
+      link: "mailto:okuborchinonye@gmail.com"
     },
     {
       icon: <Phone size={28} className="text-rose-600" />,
       title: "Call Us",
-      details: "+234 XXX XXX XXXX",
+      details: "+234 904 662 4920",
       subtext: "Mon-Fri, 9AM - 6PM WAT",
-      link: "tel:+234XXXXXXXXX"
+      link: "tel:+2349046624920"
     },
     {
       icon: <MapPin size={28} className="text-rose-600" />,
@@ -170,7 +170,7 @@ export default function Contact() {
                       </div>
                       <div>
                         <div className="font-semibold">{social.name}</div>
-                        <div className="text-sm text-rose-100">{social.handle}</div>
+                        <div className="text-sm text-rose-900">{social.handle}</div>
                       </div>
                     </a>
                   ))}
