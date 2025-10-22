@@ -1,0 +1,17 @@
+@import "tailwindcss";
+/* 
+*,
+*::before,
+*::after {
+  padding: 0;
+  max-width: 0;
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+body{
+  font-size: 1.6rem;
+} */
