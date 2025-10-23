@@ -82,6 +82,18 @@ export default function Homepage({ products = [], onFilterCategory }){
               <h3 className="text-2xl sm:text-3xl font-serif mb-4 text-rose-950 relative z-10">✨ Skincare</h3>
               <p className="text-gray-700 relative z-10">Nurture your natural radiance</p>
             </button>
+
+             <button
+              onClick={() => {
+                onFilterCategory('clothing');
+                  navigate('/shop');
+              }}
+              className="bg-gradient-to-br from-rose-50 to-rose-300 p-12 sm:p-16 rounded-xl text-center hover:-translate-y-2 transition-all shadow-lg hover:shadow-2xl group relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-rose-900 opacity-0 group-hover:opacity-10 transition-opacity"></div>
+              <h3 className="text-2xl sm:text-3xl font-serif mb-4 text-rose-950 relative z-10">✨ Clothing</h3>
+              <p className="text-gray-700 relative z-10">Drip like never before </p>
+            </button>
           </div>
         </div>
       </section>

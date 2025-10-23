@@ -95,6 +95,17 @@ const Shop = ({ products = [], onAddToCart, onToggleWishlist, wishlist = [] }) =
               >
                 ✨ Skincare
               </button>
+
+               <button
+                onClick={() => handleFilterChange('clothing')}
+                className={`px-6 py-2 rounded-full font-semibold transition-all ${
+                  currentFilter === 'clothing'
+                    ? 'bg-rose-900 text-white'
+                    : 'bg-white border-2 border-rose-300 text-gray-700 hover:border-rose-900'
+                }`}
+              >
+                ✨ Clothing
+              </button>
             </div>
 
             {/* Mobile Filter Button */}
@@ -167,6 +178,17 @@ const Shop = ({ products = [], onAddToCart, onToggleWishlist, wishlist = [] }) =
                 }`}
               >
                 ✨ Skincare
+              </button>
+
+              <button
+                onClick={() => handleFilterChange('clothing')}
+                className={`w-full px-6 py-3 rounded-lg font-semibold transition-all ${
+                  currentFilter === 'clothing'
+                    ? 'bg-rose-900 text-white'
+                    : 'bg-gray-100 text-gray-700'
+                }`}
+              >
+                ✨ Clothing
               </button>
             </div>
           </div>
