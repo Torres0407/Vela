@@ -13,7 +13,9 @@ import VMessages from "./VendorPages/VMessages";
 import VOrders from "./VendorPages/VOrders";
 import VProducts from "./VendorPages/VProducts";
 import VProfile from "./VendorPages/VProfile";
+import VPromotions from "./VendorPages/VPromotions";
 import VReviews from "./VendorPages/VReviews";
+import VSupport from "./VendorPages/VSupport";
 
 export default function App() {
   return (
@@ -39,6 +41,9 @@ export default function App() {
           <Route path="/vendor/earnings" element={<VEarnings />} />
           <Route path="/vendor/analytics" element={<VAnalytics />} />
           <Route path="/vendor/reviews" element={<VReviews />} />
+           <Route path="/vendor/promotions" element={<VPromotions />} />
+          <Route path="/vendor/support" element={<VSupport />} />
+
           
 
           

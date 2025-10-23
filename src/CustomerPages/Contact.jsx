@@ -37,7 +37,7 @@ export default function Contact() {
   const faqs = [
     {
       question: "What is your return policy?",
-      answer: "We offer a 14-day return policy on all unworn jewelry and unopened skincare products."
+      answer: "We offer a 14-day return policy on all unworn clothing, unworn jewelry and unopened skincare products."
     },
     {
       question: "How long does shipping take?",
@@ -123,7 +123,7 @@ export default function Contact() {
                     <span className="text-rose-600 text-xl mt-1">✓</span>
                     <div>
                       <h4 className="font-semibold text-gray-800 mb-1">Product Inquiries</h4>
-                      <p className="text-gray-600 text-sm">Questions about our jewelry or skincare products</p>
+                      <p className="text-gray-600 text-sm">Questions about our clothing, jewelry or skincare products</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">

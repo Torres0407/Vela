@@ -1,6 +1,8 @@
 import { BarChart3, ChevronLeft, ChevronRight, DollarSign, HelpCircle, LayoutDashboard, LogOut, Megaphone, MessageSquare, Package, ShoppingBag, Star, Store } from "lucide-react";
+import { useNavigate } from "react-router";
 
-export default function VendorSidebar({ currentPage = 'dashboard', onNavigate, isCollapsed, setIsCollapsed }){
+export default function VendorSidebar({ currentPage = 'dashboard', isCollapsed, setIsCollapsed }){
+  const navigate = useNavigate();
   const menuItems = [
     { 
       id: '/vendor/dashboard', 
@@ -15,51 +17,51 @@ export default function VendorSidebar({ currentPage = 'dashboard', onNavigate, i
       description: 'Manage inventory'
     },
     { 
-      id: '/orders', 
+      id: '/vendor/orders', 
       label: 'Orders', 
       icon: ShoppingBag,
       badge: '12',
       description: 'Customer orders'
     },
     { 
-      id: 'messages', 
+      id: '/vendor/messages', 
       label: 'Messages', 
       icon: MessageSquare,
       badge: '3',
       description: 'Customer inbox'
     },
     { 
-      id: 'profile', 
+      id: '/vendor/profile', 
       label: 'Shop Profile', 
       icon: Store,
       description: 'Store settings'
     },
     { 
-      id: 'earnings', 
+      id: '/vendor/earnings', 
       label: 'Earnings', 
       icon: DollarSign,
       description: 'Revenue & payouts'
     },
     { 
-      id: 'analytics', 
+      id: '/vendor/analytics', 
       label: 'Analytics', 
       icon: BarChart3,
       description: 'Sales reports'
     },
     { 
-      id: 'reviews', 
+      id: '/vendor/reviews', 
       label: 'Reviews', 
       icon: Star,
       description: 'Customer feedback'
     },
     { 
-      id: 'promotions', 
+      id: '/vendor/promotions', 
       label: 'Promotions', 
       icon: Megaphone,
       description: 'Deals & ads'
     },
     { 
-      id: 'support', 
+      id: '/vendor/support', 
       label: 'Support', 
       icon: HelpCircle,
       description: 'Get help'
@@ -104,7 +106,7 @@ export default function VendorSidebar({ currentPage = 'dashboard', onNavigate, i
             return (
               <li key={item.id}>
                 <button
-                  onClick={() => onNavigate && onNavigate(item.id)}
+                  onClick={() => navigate && navigate(item.id)}
                   className={`
                     w-full flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 relative
                     ${isActive 

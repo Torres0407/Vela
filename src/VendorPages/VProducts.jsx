@@ -85,7 +85,40 @@ export default function VProducts() {
       sales: 42,
       image: '🎭',
       rating: 4.7
-    }
+    },
+    {
+    id: 7,
+    name: 'Classic White T-Shirt',
+    category: 'Clothing & Fashion',
+    price: 7500,
+    stock: 60,
+    status: 'in-stock',
+    sales: 120,
+    image: '👕',
+    rating: 4.8
+  },
+  {
+    id: 8,
+    name: 'Blue Denim Jeans',
+    category: 'Clothing & Fashion',
+    price: 18500,
+    stock: 25,
+    status: 'in-stock',
+    sales: 95,
+    image: '👖',
+    rating: 4.9
+  },
+  {
+    id: 9,
+    name: 'Floral Summer Dress',
+    category: 'Clothing & Fashion',
+    price: 21000,
+    stock: 8,
+    status: 'low-stock',
+    sales: 40,
+    image: '👗',
+    rating: 4.7
+  }
   ];
 
   // Quick stats
@@ -243,6 +276,7 @@ export default function VProducts() {
                       </button>
                     </div>
                   </div>
+
 
                   {/* Product Info */}
                   <div className="p-4">

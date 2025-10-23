@@ -1,10 +1,12 @@
 import { Heart, Menu, Search, ShoppingCart, X } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
-const Navbar = ({ cartCount = 0, wishlistCount = 0, onNavigate, products = [] }) => {
+const Navbar = ({ cartCount = 0, wishlistCount = 0, products = [] }) => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate(); 
 
   const navLinks = [
     { name: 'Home', id: '/homepage' },
@@ -25,7 +27,7 @@ const Navbar = ({ cartCount = 0, wishlistCount = 0, onNavigate, products = [] })
           <nav className="flex justify-between items-center py-5">
             {/* Logo */}
             <button 
-              onClick={() => onNavigate('home')}
+              onClick={() => navigate('/home')}
               className="text-3xl sm:text-4xl font-serif font-bold text-rose-900 hover:text-rose-800 transition-colors"
             >
               Véla
@@ -36,7 +38,7 @@ const Navbar = ({ cartCount = 0, wishlistCount = 0, onNavigate, products = [] })
               {navLinks.map(link => (
                 <li key={link.id}>
                   <button
-                    onClick={() => onNavigate(link.id)}
+                    onClick={() => navigate(link.id)}
                     className="text-gray-800 hover:text-rose-900 transition-colors font-normal"
                   >
                     {link.name}
@@ -56,7 +58,7 @@ const Navbar = ({ cartCount = 0, wishlistCount = 0, onNavigate, products = [] })
               </button>
               
               <button 
-                onClick={() => onNavigate('wishlist')}
+                onClick={() => navigate('/wishlist')}
                 className="relative hover:text-rose-900 transition-colors"
                 aria-label="Wishlist"
               >
@@ -69,7 +71,7 @@ const Navbar = ({ cartCount = 0, wishlistCount = 0, onNavigate, products = [] })
               </button>
               
               <button 
-                onClick={() => onNavigate('cart')}
+                onClick={() => navigate('/cart')}
                 className="relative hover:text-rose-900 transition-colors"
                 aria-label="Cart"
               >
@@ -100,7 +102,7 @@ const Navbar = ({ cartCount = 0, wishlistCount = 0, onNavigate, products = [] })
                   <li key={link.id}>
                     <button
                       onClick={() => {
-                        onNavigate(link.id);
+                        navigate(link.id);
                         setMobileMenuOpen(false);
                       }}
                       className="text-gray-800 hover:text-rose-900 transition-colors w-full text-left py-2"
@@ -153,7 +155,7 @@ const Navbar = ({ cartCount = 0, wishlistCount = 0, onNavigate, products = [] })
                     <button
                       key={product.id}
                       onClick={() => {
-                        onNavigate('product-detail', product);
+                        navigate('/product-detail', product);
                         setSearchOpen(false);
                         setSearchQuery('');
                       }}

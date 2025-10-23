@@ -1,19 +1,21 @@
 import {
-    BarChart3,
-    DollarSign,
-    Eye,
-    MessageSquare,
-    Package,
-    Plus,
-    Settings,
-    ShoppingBag,
-    Star
+  BarChart3,
+  DollarSign,
+  Eye,
+  MessageSquare,
+  Package,
+  Plus,
+  Settings,
+  ShoppingBag,
+  Star
 } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 export default function VDashboard() {
   const [timeRange, setTimeRange] = useState('7days');
+  const navigate = useNavigate();
 
   // Sample data
   const stats = [
@@ -61,20 +63,23 @@ export default function VDashboard() {
     { date: 'Sun', sales: 38200 }
   ];
 
-  const recentOrders = [
-    { id: '#ORD-2847', customer: 'Amaka Johnson', product: 'Glow Serum Set', amount: '₦15,500', status: 'pending', time: '5 mins ago' },
-    { id: '#ORD-2846', customer: 'Chioma Eze', product: 'Hydrating Cleanser', amount: '₦8,200', status: 'processing', time: '1 hour ago' },
-    { id: '#ORD-2845', customer: 'Blessing Okafor', product: 'Vitamin C Bundle', amount: '₦22,000', status: 'shipped', time: '3 hours ago' },
-    { id: '#ORD-2844', customer: 'Funmi Adebayo', product: 'Night Cream', amount: '₦12,500', status: 'delivered', time: '5 hours ago' },
-    { id: '#ORD-2843', customer: 'Zainab Mohammed', product: 'Face Mask Set', amount: '₦9,800', status: 'delivered', time: '1 day ago' }
-  ];
+ const recentOrders = [
+  { id: '#ORD-2849', customer: 'Tope Adeyemi', product: 'Denim Jacket', amount: '₦30,000', status: 'processing', time: '2 mins ago' },
+  { id: '#ORD-2848', customer: 'Ngozi Uche', product: 'Gold Necklace', amount: '₦25,500', status: 'pending', time: '10 mins ago' },
+  { id: '#ORD-2847', customer: 'Amaka Johnson', product: 'Glow Serum Set', amount: '₦15,500', status: 'pending', time: '30 mins ago' },
+  { id: '#ORD-2846', customer: 'Chioma Eze', product: 'Cotton T-Shirt', amount: '₦8,200', status: 'delivered', time: '1 hour ago' },
+  { id: '#ORD-2845', customer: 'Blessing Okafor', product: 'Night Repair Cream', amount: '₦22,000', status: 'shipped', time: '3 hours ago' }
+];
 
-  const topProducts = [
-    { name: 'Vitamin C Glow Serum', sales: 87, revenue: '₦108,750', rating: 4.9 },
-    { name: 'Hydrating Face Cleanser', sales: 72, revenue: '₦82,800', rating: 4.8 },
-    { name: 'Night Repair Cream', sales: 65, revenue: '₦97,500', rating: 4.7 },
-    { name: 'Exfoliating Scrub', sales: 54, revenue: '₦64,800', rating: 4.6 }
-  ];
+
+ const topProducts = [
+  { name: 'Gold Necklace', sales: 58, revenue: '₦145,000', rating: 4.9 },
+  { name: 'Vitamin C Glow Serum', sales: 87, revenue: '₦108,750', rating: 4.8 },
+  { name: 'Denim Jacket', sales: 62, revenue: '₦186,000', rating: 4.7 },
+  { name: 'Cotton T-Shirt', sales: 95, revenue: '₦142,500', rating: 4.6 },
+  { name: 'Hydrating Face Cleanser', sales: 72, revenue: '₦82,800', rating: 4.5 },
+];
+
 
   const getStatusColor = (status) => {
     const colors = {
@@ -87,10 +92,11 @@ export default function VDashboard() {
   };
 
   const quickActions = [
-    { label: 'Add Product', icon: Plus, color: 'bg-rose-500 hover:bg-rose-600' },
-    { label: 'View Orders', icon: ShoppingBag, color: 'bg-blue-500 hover:bg-blue-600' },
-    { label: 'Messages', icon: MessageSquare, color: 'bg-purple-500 hover:bg-purple-600' },
-    { label: 'Analytics', icon: BarChart3, color: 'bg-green-500 hover:bg-green-600' }
+    { label: 'Add Product', icon: Plus, 
+      id: '/vendor/products', color: 'bg-rose-500 hover:bg-rose-600' },
+    { label: 'View Orders', icon: ShoppingBag, id: '/vendor/orders', color: 'bg-blue-500 hover:bg-blue-600' },
+    { label: 'Messages', icon: MessageSquare, id: '/vendor/messages', color: 'bg-purple-500 hover:bg-purple-600' },
+    { label: 'Analytics', icon: BarChart3,id: '/vendor/analytics',  color: 'bg-green-500 hover:bg-green-600' }
   ];
 
   return (
@@ -135,13 +141,30 @@ export default function VDashboard() {
           })}
         </div>
 
+        {/* Category Summary */}
+<div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+  {[
+    { category: 'Clothing', sales: '₦220,000', products: 14, color: 'bg-blue-100 text-blue-700' },
+    { category: 'Jewelry', sales: '₦180,000', products: 9, color: 'bg-yellow-100 text-yellow-700' },
+    { category: 'Skincare', sales: '₦120,000', products: 15, color: 'bg-pink-100 text-pink-700' }
+  ].map((cat, i) => (
+    <div key={i} className={`rounded-xl p-6 ${cat.color} shadow-sm`}>
+      <h3 className="font-semibold text-lg">{cat.category}</h3>
+      <p className="text-sm mt-1">Sales: {cat.sales}</p>
+      <p className="text-sm">Products: {cat.products}</p>
+    </div>
+  ))}
+</div>
+
+
         {/* Quick Actions */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
           {quickActions.map((action, index) => {
             const Icon = action.icon;
             return (
               <button
-                key={index}
+                key={action.id || index}
+                 onClick={() => navigate(action.id)}
                 className={`${action.color} text-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all transform hover:-translate-y-1 flex flex-col items-center gap-2`}
               >
                 <Icon size={28} />
