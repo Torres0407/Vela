@@ -1,10 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 
 import About from "./CustomerPages/About";
+import Cart from "./CustomerPages/Cart";
+import Checkout from "./CustomerPages/Checkout";
 import CustomerLayout from "./CustomerPages/CLayout";
 import Contact from "./CustomerPages/Contact";
 import Homepage from "./CustomerPages/Homepage";
+import ProductDetail from "./CustomerPages/ProductDetails";
 import Shop from "./CustomerPages/Shop";
+import Wishlist from "./CustomerPages/Wishlist";
 import VAnalytics from "./VendorPages/VAnalytics";
 import VDashboard from "./VendorPages/VDashboard";
 import VEarnings from "./VendorPages/VEarnings";
@@ -27,6 +31,11 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/productdetails" element={<ProductDetail />} />
+          <Route path="/checkout" element={<Checkout />} />
+          
           <Route path="*" element={<Homepage />} />
         </Route>
 

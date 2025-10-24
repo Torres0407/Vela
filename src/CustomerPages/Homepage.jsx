@@ -6,6 +6,7 @@ export default function Homepage({ products = [], onFilterCategory }){
   const featuredProducts = products.slice(0, 6);
   const navigate = useNavigate();
 
+  
   const testimonials = [
     { name: "Amara O.", review: "Absolutely stunning jewelry! I get compliments every time. Quality is amazing and it arrived perfectly packaged." },
     { name: "Chioma N.", review: "Love this necklace! It's elegant and goes with everything. Shipping was fast too." },
@@ -150,28 +151,37 @@ export default function Homepage({ products = [], onFilterCategory }){
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-white opacity-85"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <h2 className="text-3xl sm:text-4xl font-serif text-center mb-12 text-rose-900">
-            What Our Customers Say
-          </h2>
-          <div className="overflow-hidden">
-            <div className="flex gap-8 animate-scroll">
-              {[...testimonials, ...testimonials].map((testimonial, index) => (
-                <div
-                  key={index}
-                  className="flex-shrink-0 w-80 p-8 bg-white rounded-xl shadow-lg border border-gray-100"
-                >
-                  <p className="text-gray-700 mb-4 italic">"{testimonial.review}"</p>
-                  <h4 className="font-semibold text-rose-900">— {testimonial.name}</h4>
-                </div>
-              ))}
-            </div>
+     {/* Testimonials */}
+<section className="py-20 relative overflow-hidden">
+  {/* Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center"
+    style={{ backgroundImage: "url('./assets/jj.png')" }}
+  ></div>
+
+  {/* Optional overlay */}
+  <div className="absolute inset-0 bg-white/80"></div>
+
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <h2 className="text-3xl sm:text-4xl font-serif text-center mb-12 text-rose-900">
+      What Our Customers Say
+    </h2>
+    <div className="overflow-hidden">
+      <div className="flex gap-8 animate-scroll">
+        {[...testimonials, ...testimonials].map((testimonial, index) => (
+          <div
+            key={index}
+            className="flex-shrink-0 w-80 p-8 bg-white/90 rounded-xl shadow-lg border border-gray-100"
+          >
+            <p className="text-gray-700 mb-4 italic">"{testimonial.review}"</p>
+            <h4 className="font-semibold text-rose-900">— {testimonial.name}</h4>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Trust Features */}
       <section className="py-16 bg-white">
