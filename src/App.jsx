@@ -1,10 +1,17 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 
+import ADashboard from "./AdminPages/ADashboard";
+import ALayout from "./AdminPages/ALayout";
+import AUsers from "./AdminPages/AUsers";
+import AVendors from "./AdminPages/AVendors";
 import About from "./CustomerPages/About";
 import Cart from "./CustomerPages/Cart";
 import Checkout from "./CustomerPages/Checkout";
 import CustomerLayout from "./CustomerPages/CLayout";
 import Contact from "./CustomerPages/Contact";
+
+import AProducts from "./AdminPages/AProducts";
+import CustomerProfile from "./CustomerPages/CustomerProfile";
 import Homepage from "./CustomerPages/Homepage";
 import ProductDetail from "./CustomerPages/ProductDetails";
 import Shop from "./CustomerPages/Shop";
@@ -35,6 +42,7 @@ export default function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/productdetails" element={<ProductDetail />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/profile" element={<CustomerProfile />} />
           
           <Route path="*" element={<Homepage />} />
         </Route>
@@ -52,11 +60,22 @@ export default function App() {
           <Route path="/vendor/reviews" element={<VReviews />} />
            <Route path="/vendor/promotions" element={<VPromotions />} />
           <Route path="/vendor/support" element={<VSupport />} />
+        </Route>
 
-          
 
-          
-          {/* Add other vendor pages here */}
+        {/* Admin Routes */}
+        <Route path="/admin" element={<ALayout />}>
+          <Route index element={<ADashboard />} />
+          <Route path="/admin/dashboard" element={<ADashboard />} />
+          <Route path="/admin/users" element={<AUsers />} />
+          <Route path="/admin/vendors" element={<AVendors/>} />
+          <Route path="/admin/products" element={<AProducts />} />
+          {/* <Route path="/vendor/profile" element={<VProfile />} /> */}
+          {/* <Route path="/vendor/earnings" element={<VEarnings />} /> */}
+          {/* <Route path="/vendor/analytics" element={<VAnalytics />} /> */}
+          {/* <Route path="/vendor/reviews" element={<VReviews />} /> */}
+           {/* <Route path="/vendor/promotions" element={<VPromotions />} /> */}
+          {/* <Route path="/vendor/support" element={<VSupport />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>
